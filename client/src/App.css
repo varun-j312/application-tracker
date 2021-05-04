@@ -1,0 +1,292 @@
+body {
+  background: #edebe9 linear-gradient(to bottom, #dbd7d1, #edebe9) no-repeat;
+}
+
+p {
+  line-height: 1em;
+}
+
+.App-header {
+  text-align: center;
+}
+
+#App-heading {
+  font-weight: normal;
+  color: #897853;
+  text-shadow: 0 2px #fff;
+  margin: 3px;
+}
+
+.auth-btn-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.auth-btn-link {
+  text-align: center;
+  width: 15em;
+  height: 2.5em;
+  margin: 10px;
+  border-radius: 10px;
+  box-shadow: 0px 2px #888;
+  background-color: #f8f4e1;
+  border: none;
+  padding-top: 15px;
+}
+
+.auth-btn {
+  text-align: center;
+  font-size: 1em;
+  width: 10em;
+  height: 3em;
+  margin: 10px;
+  border-radius: 10px;
+  box-shadow: 0px 2px #888;
+  background-color: #f8f4e1;
+  border: none;
+}
+
+.auth-btn-link:hover,
+.auth-btn:hover {
+  background-color: #fcfcfc;
+}
+
+.auth-form-container {
+  display: flex;
+  justify-content: center;
+  height: 25em;
+}
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+.auth-form input {
+  width: 12em;
+  height: 2.5em;
+  font-size: 20px;
+  font-weight: 200;
+  box-shadow: 0px 2px #888;
+  border-radius: 10px;
+  text-align: center;
+  border: none;
+}
+.auth-form input::placeholder {
+  font-size: 20px;
+  text-align: center;
+}
+.auth-form input:focus {
+  outline: none;
+  box-shadow: 0px 4px #555;
+}
+
+.posts-container {
+  position: absolute;
+  width: 50%;
+  left: 25%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  /* outline: solid; */
+}
+
+.post {
+  position: relative;
+  width: 500px;
+  min-height: 0;
+  margin: 25px 0;
+  padding: 10px;
+  background-color: #f8f4e1;
+  box-shadow: 0px 2px #888;
+  animation: pop-up 1s ease-out;
+  display: flex;
+  justify-content: space-between;
+  border: groove 1px;
+}
+.post-left {
+  width: 60%;
+  /* outline: solid; */
+}
+.post-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+  width: 40%;
+  border-left: dashed 2px;
+  /* outline: solid; */
+  font-size: 0.9em;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.post-role {
+  color: #4e3620;
+}
+.post-company {
+  font-weight: 500;
+  color: #897853;
+}
+.post-location,
+.post-description,
+.post-salary {
+  color: #4e3620;
+  font-size: 0.9em;
+}
+.post-status {
+  padding: 5px;
+  background-color: rgba(128, 0, 0, 0.5);
+  color: #fff;
+  position: absolute;
+  top: 25%;
+  left: 63%;
+}
+.post-status-applied {
+  padding: 5px;
+  background-color: rgba(0, 128, 0, 0.7);
+  color: #fff;
+  position: absolute;
+  top: 25%;
+  left: 63%;
+}
+.post-applied-since {
+  position: absolute;
+  top: 27%;
+  left: 77%;
+}
+.post-link {
+  color: #4e3620;
+}
+.post-btn-container {
+  width: 35%;
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  top: 10px;
+}
+.post-add {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #4e3620;
+  color: #897853;
+  position: fixed;
+  right: 50px;
+  bottom: 50px;
+  font-size: 2em;
+  text-decoration: none;
+  text-align: center;
+  animation: pop-up 1s;
+}
+.post-read {
+  width: 2em;
+  height: 2em;
+  position: relative;
+}
+.post-read > div {
+  position: absolute;
+  top: 2px;
+  left: -2px;
+  width: 2em;
+  height: 1.3em;
+  background-color: #897853;
+  border-radius: 100%;
+}
+.post-read > div > div {
+  position: absolute;
+  top: 0;
+  left: 7px;
+  width: 1em;
+  height: 1.3em;
+  background-color: #4e3620;
+  border-radius: 100%;
+}
+.post-edit {
+  width: 2em;
+  height: 2em;
+  position: relative;
+}
+.post-edit > div {
+  position: absolute;
+  top: -3px;
+  width: 0.8em;
+  height: 1.5em;
+  background-color: #897853;
+  border-bottom: solid 7px #4e3620;
+  border-radius: 50% 50% 100% 100%;
+  transform: rotate(45deg);
+}
+.post-delete {
+  width: 2em;
+  height: 2em;
+  position: relative;
+}
+.post-delete div {
+  position: absolute;
+  top: -2px;
+  right: 8px;
+  width: 0.5em;
+  height: 2em;
+  background-color: #897853;
+  border-radius: 10px;
+  transform: rotate(45deg);
+}
+.post-delete :first-child {
+  transform: rotate(-45deg);
+}
+
+@keyframes pop-up {
+  0% {
+    scale: 0;
+  }
+  100% {
+    scale: 1;
+  }
+}
+
+.detailed-post-container {
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  margin: 50px;
+  background-color: #edebe9;
+}
+
+.post-table {
+  width: 40%;
+  height: 100%;
+}
+
+.post-table tr :first-child {
+  text-align: right;
+  color: #4e3620;
+  font-weight: bold;
+}
+.post-table tr > :last-child {
+  width: 100%;
+  border: dotted 1px;
+  padding-left: 30px;
+  color: #897853;
+  font-weight: bold;
+}
+td > a {
+  color: #897853;
+}
+
+.compose-container {
+  display: flex;
+  justify-content: center;
+  height: 37em;
+}
+.compose-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.compose-form input {
+  height: 2em;
+}
