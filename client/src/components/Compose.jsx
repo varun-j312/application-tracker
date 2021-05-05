@@ -8,9 +8,11 @@ function Compose(props) {
 
   function handleApplied() {
     document.getElementById("appliedDate").disabled = false;
+    document.getElementById("appliedDate").required = true;
   }
   function handleNotApplied() {
     document.getElementById("appliedDate").disabled = true;
+    document.getElementById("appliedDate").required = false;
   }
   function handleSubmit(e) {
     e.preventDefault();

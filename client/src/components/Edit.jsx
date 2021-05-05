@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
+import moment from "moment";
 import "../App.css";
 
 function Edit(props) {
@@ -15,7 +16,7 @@ function Edit(props) {
       .then((data) =>
         setPost(() => {
           let post = { ...data };
-          post.appliedOn = post.appliedOn?.slice(0, 23);
+          post.appliedOn = moment(post.appliedOn).format("YYYY-MM-DDTHH:mm:ss");
           if (post.appStatus === "Applied") {
             document.getElementById("applied").checked = true;
           } else {
@@ -48,9 +49,11 @@ function Edit(props) {
 
   function handleApplied() {
     document.getElementById("appliedDate").disabled = false;
+    document.getElementById("appliedDate").required = true;
   }
   function handleNotApplied() {
     document.getElementById("appliedDate").disabled = true;
+    document.getElementById("appliedDate").required = false;
   }
   function handleSubmit(e) {
     e.preventDefault();
