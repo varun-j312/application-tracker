@@ -1,23 +1,18 @@
+// requiring modules
 const createError = require("http-errors");
 const express = require("express");
 const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const cors = require("cors");
-const registerRouter = require("./routes/register");
-const loginRouter = require("./routes/login");
-const postsRouter = require("./routes/posts");
-const postRouter = require("./routes/post");
-const composeRouter = require("./routes/compose");
-const deleteRouter = require("./routes/delete");
-const editRouter = require("./routes/edit");
-const passport = require("passport");
-const LocalStrategy = require("passport-local").Strategy;
-const session = require("express-session");
+const routes = require("./routes");
+// const passport = require("passport");
+// require("./config/passportConfig")(passport);
+// const session = require("express-session");
 
 const app = express();
 
-// view engine setup
+// configuring the app
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "jade");
 app.use(cors());
@@ -27,25 +22,19 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-// passport auth setup
-app.use(
-  session({
-    secret: "my secret",
-    resave: false,
-    saveUninitialized: false,
-  })
-);
-app.use(passport.initialize());
-app.use(passport.session());
+// initializing passport & sessions
+// app.use(
+//   session({
+//     secret: "my secret",
+//     resave: false,
+//     saveUninitialized: false,
+//   })
+// );
+// app.use(passport.initialize());
+// app.use(passport.session());
 
 // using routes
-app.use("/register", registerRouter);
-app.use("/login", loginRouter);
-app.use("/posts", postsRouter);
-app.use("/post", postRouter);
-app.use("/compose", composeRouter);
-app.use("/delete", deleteRouter);
-app.use("/edit", editRouter);
+app.use(routes);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

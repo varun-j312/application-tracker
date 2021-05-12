@@ -12,22 +12,23 @@ import Edit from "./components/Edit";
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <h1 id="App-heading">Track your applications</h1>
-      </header>
       <Router>
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/register" component={Register} />
           <Route exact path="/login" component={Login} />
-          <Route exact path="/posts/:userId" component={Posts} />
+          <Route exact path="/:userName/:userId/posts" component={Posts} />
           <Route
             exact
-            path="/post/:userId/:applicationId"
+            path="/:userName/:userId/post/:applicationId"
             component={DetailedPost}
           />
-          <Route exact path="/compose/:userId" component={Compose} />
-          <Route exact path="/edit/:userId/:applicationId" component={Edit} />
+          <Route exact path="/:userName/:userId/compose" component={Compose} />
+          <Route
+            exact
+            path="/:userName/:userId/edit/:applicationId"
+            component={Edit}
+          />
         </Switch>
       </Router>
     </div>

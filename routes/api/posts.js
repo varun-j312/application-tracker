@@ -10,8 +10,8 @@ const connection = mysql.createConnection({
 });
 
 /* GET home page. */
-router.get("/:id", (req, res, next) => {
-  let userId = req.params.id;
+router.get("/:userId", (req, res, next) => {
+  let userId = req.params.userId;
   let q = `SELECT * FROM users INNER JOIN applications ON users.id = applications.userId WHERE id = ${userId}`;
   connection.query(q, (err, results) => {
     res.send(results);

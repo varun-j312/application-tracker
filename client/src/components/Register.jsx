@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 
 function Register() {
@@ -26,7 +27,31 @@ function Register() {
 
   return (
     <div className="auth-form-container">
+      <div className="auth-form-home">
+        <span>Application Tracker</span>
+        <div className="auth-form-card">
+          <div className="board-container">
+            <div className="board">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+          </div>
+          <div className="user-container">
+            <div className="user">
+              <div id="head"></div>
+              <div id="torso"></div>
+              <div id="arm"></div>
+            </div>
+          </div>
+        </div>
+      </div>
       <form className="auth-form">
+        <span>REGISTER</span>
         <input
           type="text"
           name="username"
@@ -47,6 +72,7 @@ function Register() {
           Register
         </button>
         <h3>{formResult}</h3>
+        <Link to="/login">Already registered? Login here!</Link>
       </form>
     </div>
   );

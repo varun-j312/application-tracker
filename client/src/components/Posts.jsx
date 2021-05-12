@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "../App.css";
+import Nav from "./Nav";
 import Post from "./Post";
 
 function Posts(props) {
+  let userName = props.match.params.userName;
   let userId = props.match.params.userId;
   const [posts, setPosts] = useState([]);
   useEffect(() => {
@@ -13,38 +15,42 @@ function Posts(props) {
   }, [userId]);
 
   return (
-    <div className="posts-container">
-      {posts.map((post, index) => {
-        return (
-          <Post
-            key={index}
-            id={post.applicationId}
-            userId={post.userId}
-            role={post.jobRole}
-            company={post.companyName}
-            location={post.companyLocation}
-            description={post.jobDescription}
-            salary={post.monthlySalary}
-            source={post.appSource}
-            link={post.appLink}
-            contact={post.contactInfo}
-            status={post.appStatus}
-            date={post.appliedOn}
-          />
-        );
-      })}
-      <Link
-        className="post-add"
-        to={{
-          pathname: `/compose/${userId}`,
-          aboutProps: {
-            id: userId,
-          },
-        }}
-        title="Click to add a new post"
-      >
-        +
-      </Link>
+    <div>
+      <Nav userName={userName} routeName="posts"></Nav>
+      <div className="posts-container">
+        {posts.map((post, index) => {
+          return (
+            <Post
+              userName={userName}
+              key={index}
+              id={post.applicationId}
+              userId={post.userId}
+              role={post.jobRole}
+              company={post.companyName}
+              location={post.companyLocation}
+              description={post.jobDescription}
+              salary={post.monthlySalary}
+              source={post.appSource}
+              link={post.appLink}
+              contact={post.contactInfo}
+              status={post.appStatus}
+              date={post.appliedOn}
+            />
+          );
+        })}
+        <Link
+          className="post-add"
+          to={{
+            pathname: `/${userName}/${userId}/compose`,
+            aboutProps: {
+              id: userId,
+            },
+          }}
+          title="Click to add a new post"
+        >
+          +
+        </Link>
+      </div>
     </div>
   );
 }

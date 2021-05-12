@@ -1,9 +1,10 @@
 import axios from "axios";
 import { useHistory } from "react-router-dom";
-import "../App.css";
+import Nav from "./Nav";
 
 function Compose(props) {
   let history = useHistory();
+  let userName = props.match.params.userName;
   let userId = props.match.params.userId;
 
   function handleApplied() {
@@ -33,67 +34,70 @@ function Compose(props) {
     });
     axios.post("http://localhost:9000/compose", postObj).then((res) => {
       if (res.status === 200) {
-        history.push(`/posts/${userId}`);
+        history.push(`/${userName}/${userId}/posts`);
       }
     });
   }
 
   return (
-    <div className="compose-container">
-      <form className="compose-form" onSubmit={handleSubmit}>
-        <input type="hidden" name="userId" value={userId} />
-        <input type="text" placeholder="Role" name="role" required />
-        <input type="text" placeholder="Company" name="company" required />
-        <input type="text" placeholder="Location" name="location" required />
-        <textarea
-          placeholder="Description"
-          name="description"
-          rows="5"
-          cols="50"
-          required
-        />
-        <input
-          type="number"
-          placeholder="Monthly salary"
-          name="salary"
-          required
-        />
-        <input type="text" placeholder="Source" name="source" required />
-        <input type="text" placeholder="Link" name="link" required />
-        <input type="text" placeholder="Contact" name="contact" required />
-        <div>
-          <input
-            type="radio"
-            id="applied"
-            name="status"
-            value="Applied"
-            onClick={handleApplied}
+    <div>
+      <Nav userName={userName} userId={userId} routeName="compose"></Nav>
+      <div className="compose-container">
+        <form className="compose-form" onSubmit={handleSubmit}>
+          <input type="hidden" name="userId" value={userId} />
+          <input type="text" placeholder="Role" name="role" required />
+          <input type="text" placeholder="Company" name="company" required />
+          <input type="text" placeholder="Location" name="location" required />
+          <textarea
+            placeholder="Description"
+            name="description"
+            rows="5"
+            cols="50"
             required
           />
-          <label for="applied">Applied</label>
           <input
-            type="radio"
-            id="not-applied"
-            name="status"
-            value="Not Applied"
-            onClick={handleNotApplied}
+            type="number"
+            placeholder="Monthly salary"
+            name="salary"
+            required
           />
-          <label for="not-applied">Not Applied</label>
-        </div>
-        <input
-          type="datetime-local"
-          id="appliedDate"
-          placeholder="Applied on"
-          name="date"
-        />
-        <textarea
-          placeholder="Add notes...(max 255 chars)"
-          name="note"
-          rows="5"
-          cols="50"
-        />
-        <input type="submit" />
-      </form>
+          <input type="text" placeholder="Source" name="source" required />
+          <input type="text" placeholder="Link" name="link" required />
+          <input type="text" placeholder="Contact" name="contact" required />
+          <div>
+            <input
+              type="radio"
+              id="applied"
+              name="status"
+              value="Applied"
+              onClick={handleApplied}
+              required
+            />
+            <label for="applied">Applied</label>
+            <input
+              type="radio"
+              id="not-applied"
+              name="status"
+              value="Not Applied"
+              onClick={handleNotApplied}
+            />
+            <label for="not-applied">Not Applied</label>
+          </div>
+          <input
+            type="datetime-local"
+            id="appliedDate"
+            placeholder="Applied on"
+            name="date"
+          />
+          <textarea
+            placeholder="Add notes...(max 255 chars)"
+            name="note"
+            rows="5"
+            cols="50"
+          />
+          <input type="submit" />
+        </form>
+      </div>
     </div>
   );
 }

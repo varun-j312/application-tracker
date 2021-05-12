@@ -26,14 +26,20 @@ function Post(props) {
       </div>
       <div className="post-right">
         <div className="post-btn-container">
-          <Link to={`/post/${props.userId}/${props.id}`} title="Read More">
+          <Link
+            to={`/${props.userName}/${props.userId}/post/${props.id}`}
+            title="Read More"
+          >
             <button className="post-read">
               <div>
                 <div></div>
               </div>
             </button>
           </Link>
-          <Link to={`/edit/${props.userId}/${props.id}`} title="Edit">
+          <Link
+            to={`/${props.userName}/${props.userId}/edit/${props.id}`}
+            title="Edit"
+          >
             <button className="post-edit">
               <div></div>
             </button>
